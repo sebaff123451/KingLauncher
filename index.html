@@ -32,6 +32,7 @@
             align-items: center;
             color: white;
             text-align: center;
+            overflow: hidden;
         }
 
         @keyframes rgb {
@@ -45,7 +46,21 @@
             padding: 40px;
             border-radius: 16px;
             max-width: 900px;
+            width: 100%;
             box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: 200%;
+            transition: transform 0.5s ease;
+        }
+
+        .panel {
+            width: 50%;
+            padding: 20px;
         }
 
         h1 {
@@ -81,39 +96,116 @@
 
         .download-btn:active {
             transform: scale(0.95);
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
         }
 
-        .info {
+        .info-btn {
             margin-top: 25px;
             font-size: 14px;
             opacity: 0.85;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .info-btn:hover {
+            opacity: 1;
+        }
+
+        /* MÁS JUEGOS */
+        .games {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .game-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 200px;
+        }
+
+        .game-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .game-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #00ffcc;
+            color: black;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>El Mejor Launcher Para Jugar Minecraft KingLauncher by Sebas</h1>
+<div class="container">
+    <div class="slider" id="slider">
 
-        <p>
-            Launcher moderno para Minecraft <b>No Premium</b><br>
-            Sin virus · Gratis · Fácil de usar
-        </p>
+        <!-- PANEL PRINCIPAL -->
+        <div class="panel">
+            <h1>El Mejor Launcher Para Jugar Minecraft KingLauncher by Sebas</h1>
 
-        <p>
-            Compatible con <b>Windows 10 / 11</b>
-        </p>
+            <p>
+                Launcher moderno para Minecraft <b>No Premium</b><br>
+                Sin virus · Gratis · Fácil de usar
+            </p>
 
-        <a href="KingLauncher.rar" download>
-            <button class="download-btn">
-                Descargar KingLauncher (RAR)
-            </button>
-        </a>
+            <p>
+                Compatible con <b>Windows 10 / 11</b>
+            </p>
 
-        <div class="info">
-            No requiere instalación · Solo extrae y juega
+            <a href="KingLauncher.rar" download>
+                <button class="download-btn">
+                    Descargar KingLauncher (RAR)
+                </button>
+            </a>
+
+            <div class="info-btn" onclick="toggleGames()">
+                Más juegos
+            </div>
         </div>
+
+        <!-- PANEL JUEGOS -->
+        <div class="panel">
+            <h1>Más Juegos</h1>
+
+            <div class="games">
+                <div class="game-card">
+                    <img src="granny.png" alt="Granny">
+                    <a href="https://download1507.mediafire.com/1qno8nvi9acgkODvHEojsJ9K16TZUfaxiARZ03Zi9oy2yNlFoAM3ghcoxbjFJw31KvgTclPl9-Zf06sU3QrOLtlbBYZHAI58KbDYDLXKL87W3RSPg6xrnP8l_T-UGhf9LzVCpuV-nhRbtpJ3m6UfDwLTC7aD98kh5858_sEzyGICU8dg/h2dzayq2i0qjpb4/Granny+For+Windows+By+Sebas.rar" target="_blank">Descargar</a>
+                </div>
+
+                <div class="game-card">
+                    <img src="schoolboy.png" alt="Schoolboy Runaway">
+                    <a href="https://download1531.mediafire.com/u9d4yvvec8agQQ-zMGTAX5VH7ijN1wnvxwQjGChacgIqhitB1j7S0bIEXB9sHrUaDfP5VX8qVlcRXWLOofTmrX_EMeeMtFOQwQb88hrQbgbIwt5tN-immCZ-mcbN-yT-1n5B2oJXjiSlIrtDSbgvsSRbuUs7EaM-lohizd3fdWT6rn7A/tw7bmaz13qe9ewc/SchoolBoy+Runaway+For+Windows+By+Sebas.rare" target="_blank">Descargar</a>
+                </div>
+            </div>
+
+            <div class="info-btn" onclick="toggleGames()">
+                Regresar
+            </div>
+        </div>
+
     </div>
+</div>
+
+<script>
+    let showingGames = false;
+
+    function toggleGames() {
+        const slider = document.getElementById("slider");
+        showingGames = !showingGames;
+        slider.style.transform = showingGames ? "translateX(-50%)" : "translateX(0)";
+    }
+</script>
+
 </body>
 </html>
