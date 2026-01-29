@@ -3,13 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <title>KingLauncher</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(270deg,
+                #ff0000,
+                #ff9900,
+                #ffff00,
+                #00ff00,
+                #00ffff,
+                #0000ff,
+                #ff00ff
+            );
+            background-size: 1400% 1400%;
+            animation: rgb 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        @keyframes rgb {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.65);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 900px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            margin-top: 30px;
+            padding: 18px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #00ffcc, #0066ff);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.9);
+        }
+
+        .download-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+        }
+
+        .info {
+            margin-top: 25px;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+    </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>👑 KingLauncher</h1>
-        <p>Launcher moderno para Minecraft</p>
-        <button>Descargar KingLauncher (RAR)</button>
+        <h1>El Mejor Launcher Para Jugar Minecraft Gratis</h1>
+
+        <p>
+            Launcher moderno para Minecraft <b>No Premium</b><br>
+            Sin virus · Gratis · Fácil de usar
+        </p>
+
+        <p>
+            Compatible con <b>Windows 10 / 11</b>
+        </p>
+
+        <a href="KingLauncher.rar" download>
+            <button class="download-btn">
+                Descargar KingLauncher (RAR)
+            </button>
+        </a>
+
+        <div class="info">
+            No requiere instalación · Solo extrae y juega
+        </div>
     </div>
+
 </body>
 </html>
