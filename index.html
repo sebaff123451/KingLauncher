@@ -1,226 +1,181 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>KingLauncher</title>
-    <link rel="icon" href="KL.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>KingLauncher</title>
+<link rel="icon" href="KL.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(270deg,
-                #ff0000,
-                #ff9900,
-                #ffff00,
-                #00ff00,
-                #00ffff,
-                #0000ff,
-                #ff00ff
-            );
-            background-size: 1400% 1400%;
-            animation: rgb 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
+body{
+min-height:100vh;
+background:linear-gradient(270deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff);
+background-size:1400% 1400%;
+animation:rgb 15s ease infinite;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center
+}
 
-        @keyframes rgb {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+@keyframes rgb{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
 
-        .container {
-            background: rgba(0, 0, 0, 0.65);
-            padding: 40px;
-            border-radius: 16px;
-            max-width: 900px;
-            width: 100%;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-            position: relative;
-            overflow: hidden;
-        }
+.container{
+background:rgba(0,0,0,.65);
+padding:40px;
+border-radius:16px;
+max-width:900px;
+box-shadow:0 0 30px rgba(0,0,0,.8);
+overflow:hidden;
+position:relative
+}
 
-        .slider {
-            display: flex;
-            width: 200%;
-            transition: transform 0.5s ease;
-        }
+h1{font-size:36px;margin-bottom:20px;text-transform:uppercase}
+p{font-size:18px;margin-bottom:15px;line-height:1.6}
 
-        .panel {
-            width: 50%;
-            padding: 20px;
-        }
+.download-btn{
+margin-top:30px;
+padding:18px 40px;
+font-size:20px;
+font-weight:bold;
+color:white;
+background:linear-gradient(45deg,#00ffcc,#0066ff);
+border:none;
+border-radius:12px;
+cursor:pointer;
+transition:.15s;
+box-shadow:0 0 20px rgba(0,255,204,.6)
+}
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+.download-btn:hover{transform:scale(1.05)}
+.download-btn:active{transform:scale(.95)}
 
-        p {
-            font-size: 18px;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
+.switch-btn{
+margin-top:25px;
+padding:8px 22px;
+font-size:14px;
+background:white;
+border:2px solid black;
+border-radius:20px;
+cursor:pointer;
+color:black;
+font-weight:bold
+}
 
-        .download-btn {
-            margin-top: 30px;
-            padding: 18px 40px;
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-            background: linear-gradient(45deg, #00ffcc, #0066ff);
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-        }
+.slider{
+display:flex;
+width:200%;
+transition:transform .5s ease
+}
 
-        .download-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 255, 204, 0.9);
-        }
+.panel{
+width:50%;
+padding:10px
+}
 
-        .download-btn:active {
-            transform: scale(0.95);
-        }
+.games{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:30px
+}
 
-        /* BOTÓN MÁS JUEGOS / REGRESAR */
-        .info-btn {
-            margin-top: 25px;
-            padding: 10px 22px;
-            font-size: 14px;
-            font-weight: bold;
-            background: white;
-            color: black;
-            border: 2px solid black;
-            border-radius: 20px;
-            cursor: pointer;
-            display: inline-block;
-            transition: transform 0.15s, box-shadow 0.15s;
-        }
+.game-card{
+background:rgba(255,255,255,.15);
+padding:20px;
+border-radius:12px;
+width:180px
+}
 
-        .info-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px rgba(255,255,255,0.6);
-        }
+.game-card img{
+width:90px;
+height:90px;
+border-radius:10px;
+margin-bottom:10px
+}
 
-        /* MÁS JUEGOS */
-        .games {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
+.game-title{
+font-weight:bold;
+margin-bottom:10px
+}
 
-        .game-card {
-            background: rgba(255,255,255,0.12);
-            border-radius: 14px;
-            padding: 20px;
-            width: 220px;
-        }
-
-        .game-card img {
-            width: 110px;
-            height: 110px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-
-        .game-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .game-card a {
-            display: inline-block;
-            margin-top: 5px;
-            padding: 10px 22px;
-            background: #00ffcc;
-            color: black;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-    </style>
+.game-card a button{
+padding:8px 20px;
+border:none;
+border-radius:8px;
+background:#00ffcc;
+cursor:pointer;
+font-weight:bold
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <div class="slider" id="slider">
 
-        <!-- PANEL PRINCIPAL -->
-        <div class="panel">
-            <h1>El Mejor Launcher Para Jugar Minecraft KingLauncher by Sebas</h1>
+<div class="slider" id="slider">
 
-            <p>
-                Launcher moderno para Minecraft <b>No Premium</b><br>
-                Sin virus · Gratis · Fácil de usar
-            </p>
+<!-- PANEL PRINCIPAL -->
+<div class="panel">
+<h1>EL MEJOR LAUNCHER PARA JUGAR MINECRAFT KINGLAUNCHER BY SEBAS</h1>
 
-            <p>
-                Compatible con <b>Windows 10 / 11</b>
-            </p>
+<p>Launcher moderno para Minecraft <b>No Premium</b><br>Sin virus · Gratis · Fácil de usar</p>
+<p>Compatible con <b>Windows 10 / 11</b></p>
 
-            <a href="KingLauncher.rar" download>
-                <button class="download-btn">
-                    Descargar KingLauncher (RAR)
-                </button>
-            </a>
+<a href="KingLauncher.rar" download>
+<button class="download-btn">Descargar KingLauncher (RAR)</button>
+</a>
 
-            <div class="info-btn" onclick="toggleGames()">
-                Más juegos
-            </div>
-        </div>
+<br>
+<button class="switch-btn" onclick="mostrarJuegos()">Más juegos</button>
+</div>
 
-        <!-- PANEL JUEGOS -->
-        <div class="panel">
-            <h1>Más Juegos</h1>
+<!-- PANEL JUEGOS -->
+<div class="panel">
+<h1>MÁS JUEGOS</h1>
 
-            <div class="games">
-                <div class="game-card">
-                    <img src="granny.png" alt="Granny">
-                    <div class="game-title">Granny</div>
-                    <a href="Granny Link" target="_blank">Descargar</a>
-                </div>
+<div class="games">
 
-                <div class="game-card">
-                    <img src="schoolboy.png" alt="Schoolboy Runaway">
-                    <div class="game-title">Schoolboy Runaway</div>
-                    <a href="Schoolboy Link" target="_blank">Descargar</a>
-                </div>
-            </div>
+<div class="game-card">
+<img src="granny.png">
+<div class="game-title">Granny</div>
+<a href="Granny Link">
+<button>Descargar</button>
+</a>
+</div>
 
-            <div class="info-btn" onclick="toggleGames()">
-                Regresar
-            </div>
-        </div>
+<div class="game-card">
+<img src="schoolboy.png">
+<div class="game-title">Schoolboy Runaway</div>
+<a href="Schoolboy Link">
+<button>Descargar</button>
+</a>
+</div>
 
-    </div>
+</div>
+
+<br>
+<button class="switch-btn" onclick="volver()">Regresar</button>
+</div>
+
+</div>
 </div>
 
 <script>
-    let showingGames = false;
-
-    function toggleGames() {
-        const slider = document.getElementById("slider");
-        showingGames = !showingGames;
-        slider.style.transform = showingGames ? "translateX(-50%)" : "translateX(0)";
-    }
+function mostrarJuegos(){
+document.getElementById("slider").style.transform="translateX(-50%)"
+}
+function volver(){
+document.getElementById("slider").style.transform="translateX(0)"
+}
 </script>
 
 </body>
