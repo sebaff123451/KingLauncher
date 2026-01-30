@@ -40,6 +40,13 @@ position:relative
 h1{font-size:36px;margin-bottom:20px;text-transform:uppercase}
 p{font-size:18px;margin-bottom:15px;line-height:1.6}
 
+/* ===== BOTONES ===== */
+
+.btn-wrap{
+position:relative;
+display:inline-block;
+}
+
 .download-btn{
 margin-top:30px;
 padding:18px 40px;
@@ -53,6 +60,37 @@ cursor:pointer;
 transition:.15s;
 box-shadow:0 0 20px rgba(0,255,204,.6)
 }
+
+.game-card button{
+padding:8px 20px;
+border:none;
+border-radius:8px;
+background:#00ffcc;
+cursor:pointer;
+font-weight:bold
+}
+
+/* ===== CONTADOR SUPERPUESTO ===== */
+
+.download-counter{
+position:absolute;
+bottom:6px;
+right:6px;
+display:flex;
+align-items:center;
+gap:4px;
+background:rgba(0,0,0,.6);
+padding:2px 6px;
+border-radius:10px;
+font-size:12px;
+}
+
+.download-counter img{
+width:14px;
+height:14px;
+}
+
+/* ===== RESTO ===== */
 
 .switch-btn{
 margin-top:25px;
@@ -72,7 +110,10 @@ width:200%;
 transition:transform .5s ease
 }
 
-.panel{width:50%;padding:10px}
+.panel{
+width:50%;
+padding:10px
+}
 
 .games{
 display:flex;
@@ -95,15 +136,9 @@ border-radius:10px;
 margin-bottom:10px
 }
 
-.game-title{font-weight:bold;margin-bottom:10px}
-
-.game-card a button{
-padding:8px 20px;
-border:none;
-border-radius:8px;
-background:#00ffcc;
-cursor:pointer;
-font-weight:bold
+.game-title{
+font-weight:bold;
+margin-bottom:10px
 }
 </style>
 </head>
@@ -120,13 +155,14 @@ font-weight:bold
 <p>Launcher moderno para Minecraft <b>No Premium</b><br>Sin virus · Gratis · Fácil de usar</p>
 <p>Compatible con <b>Windows 10 / 11</b></p>
 
+<div class="btn-wrap">
 <a href="KingLauncher.rar" download onclick="addDownload('kinglauncher')">
 <button class="download-btn">Descargar KingLauncher (RAR)</button>
 </a>
-
-<div style="margin-top:6px;font-size:14px;opacity:.9">
-<img src="download.png" width="18" style="vertical-align:middle">
+<div class="download-counter">
+<img src="download.png">
 <span id="count-kinglauncher">0</span>
+</div>
 </div>
 
 <br>
@@ -139,35 +175,35 @@ font-weight:bold
 
 <div class="games">
 
-<!-- GRANNY -->
 <div class="game-card">
 <img src="granny.png">
 <div class="game-title">Granny Para Computadora</div>
 
+<div class="btn-wrap">
 <a href="https://download1507.mediafire.com/4t80d3jsr0sg66ycQl4boQKQ6ze5XAZ4gfOjByglGw9jrLc8dHXBpZDJFFHxkbCq6Qy9Kt3O4bSbfTT-1kt9tvTIe9YcxsGDmazLCXqAgwUOcMsiJUSM_v-5Sie0bV5Gjhs8LrFIawxBzU_b6plmLJMV_-jXsaTl57p7y0KZ1O2bKYVo/h2dzayq2i0qjpb4/Granny+For+Windows+By+Sebas.rar"
 onclick="addDownload('granny')">
 <button>Descargar</button>
 </a>
-
-<div style="margin-top:6px;font-size:13px">
-<img src="download.png" width="16" style="vertical-align:middle">
+<div class="download-counter">
+<img src="download.png">
 <span id="count-granny">0</span>
 </div>
 </div>
+</div>
 
-<!-- SCHOOLBOY -->
 <div class="game-card">
 <img src="schoolboy.png">
 <div class="game-title">Schoolboy Runaway</div>
 
+<div class="btn-wrap">
 <a href="https://download1531.mediafire.com/eht8byj85figp21yVMwxaAUm5AHC4NfIyVCVHmrIp6pXn60jJvLaBfZssMVO6-oQGg7Psz1q_KHv2LV0Aw9Hp3nQbKgTY5SSKOXYwcaMEQdtmtSTgfZt42Tz0RBNURfVkItK2_4w415x_EHhO10yAXwcHdqfpY7atOBSVobTvuBVRCA2/tw7bmaz13qe9ewc/SchoolBoy+Runaway+For+Windows+By+Sebas.rar"
 onclick="addDownload('schoolboy')">
 <button>Descargar</button>
 </a>
-
-<div style="margin-top:6px;font-size:13px">
-<img src="download.png" width="16" style="vertical-align:middle">
+<div class="download-counter">
+<img src="download.png">
 <span id="count-schoolboy">0</span>
+</div>
 </div>
 </div>
 
@@ -184,11 +220,11 @@ onclick="addDownload('schoolboy')">
 function mostrarJuegos(){
 document.getElementById("slider").style.transform="translateX(-50%)"
 }
-
 function volver(){
 document.getElementById("slider").style.transform="translateX(0)"
 }
 
+/* ===== CONTADOR ===== */
 function addDownload(id){
 let key="downloads_"+id
 let count=localStorage.getItem(key)
@@ -203,7 +239,6 @@ let count=localStorage.getItem("downloads_"+id)||0
 document.getElementById("count-"+id).innerText=count
 })
 }
-
 loadDownloads()
 </script>
 
