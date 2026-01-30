@@ -34,17 +34,3 @@ button {
 button:hover {
     background: #00cc7a;
 }
-.download-info{
-display:flex;
-align-items:center;
-justify-content:flex-end;
-gap:6px;
-margin-top:8px;
-font-size:13px;
-opacity:.85
-}
-
-.download-info img{
-width:18px;
-height:18px
-}
