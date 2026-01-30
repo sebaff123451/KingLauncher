@@ -54,9 +54,6 @@ transition:.15s;
 box-shadow:0 0 20px rgba(0,255,204,.6)
 }
 
-.download-btn:hover{transform:scale(1.05)}
-.download-btn:active{transform:scale(.95)}
-
 .switch-btn{
 margin-top:25px;
 padding:8px 22px;
@@ -75,10 +72,7 @@ width:200%;
 transition:transform .5s ease
 }
 
-.panel{
-width:50%;
-padding:10px
-}
+.panel{width:50%;padding:10px}
 
 .games{
 display:flex;
@@ -101,10 +95,7 @@ border-radius:10px;
 margin-bottom:10px
 }
 
-.game-title{
-font-weight:bold;
-margin-bottom:10px
-}
+.game-title{font-weight:bold;margin-bottom:10px}
 
 .game-card a button{
 padding:8px 20px;
@@ -120,7 +111,6 @@ font-weight:bold
 <body>
 
 <div class="container">
-
 <div class="slider" id="slider">
 
 <!-- PANEL PRINCIPAL -->
@@ -130,9 +120,14 @@ font-weight:bold
 <p>Launcher moderno para Minecraft <b>No Premium</b><br>Sin virus · Gratis · Fácil de usar</p>
 <p>Compatible con <b>Windows 10 / 11</b></p>
 
-<a href="KingLauncher.rar" download>
+<a href="KingLauncher.rar" download onclick="addDownload('kinglauncher')">
 <button class="download-btn">Descargar KingLauncher (RAR)</button>
 </a>
+
+<div style="margin-top:6px;font-size:14px;opacity:.9">
+<img src="download.png" width="18" style="vertical-align:middle">
+<span id="count-kinglauncher">0</span>
+</div>
 
 <br>
 <button class="switch-btn" onclick="mostrarJuegos()">Más juegos</button>
@@ -144,20 +139,36 @@ font-weight:bold
 
 <div class="games">
 
+<!-- GRANNY -->
 <div class="game-card">
 <img src="granny.png">
 <div class="game-title">Granny Para Computadora</div>
-<a href="https://download1507.mediafire.com/4t80d3jsr0sg66ycQl4boQKQ6ze5XAZ4gfOjByglGw9jrLc8dHXBpZDJFFHxkbCq6Qy9Kt3O4bSbfTT-1kt9tvTIe9YcxsGDmazLCXqAgwUOcMsiJUSM_v-5Sie0bV5Gjhs8LrFIawxBzU_b6plmLJMV_-jXsaTl57p7y0KZ1O2bKYVo/h2dzayq2i0qjpb4/Granny+For+Windows+By+Sebas.rar">
+
+<a href="https://download1507.mediafire.com/4t80d3jsr0sg66ycQl4boQKQ6ze5XAZ4gfOjByglGw9jrLc8dHXBpZDJFFHxkbCq6Qy9Kt3O4bSbfTT-1kt9tvTIe9YcxsGDmazLCXqAgwUOcMsiJUSM_v-5Sie0bV5Gjhs8LrFIawxBzU_b6plmLJMV_-jXsaTl57p7y0KZ1O2bKYVo/h2dzayq2i0qjpb4/Granny+For+Windows+By+Sebas.rar"
+onclick="addDownload('granny')">
 <button>Descargar</button>
 </a>
+
+<div style="margin-top:6px;font-size:13px">
+<img src="download.png" width="16" style="vertical-align:middle">
+<span id="count-granny">0</span>
+</div>
 </div>
 
+<!-- SCHOOLBOY -->
 <div class="game-card">
 <img src="schoolboy.png">
 <div class="game-title">Schoolboy Runaway</div>
-<a href="https://download1531.mediafire.com/eht8byj85figp21yVMwxaAUm5AHC4NfIyVCVHmrIp6pXn60jJvLaBfZssMVO6-oQGg7Psz1q_KHv2LV0Aw9Hp3nQbKgTY5SSKOXYwcaMEQdtmtSTgfZt42Tz0RBNURfVkItK2_4w415x_EHhO10yAXwcHdqfpY7atOBSVobTvuBVRCA2/tw7bmaz13qe9ewc/SchoolBoy+Runaway+For+Windows+By+Sebas.rar">
+
+<a href="https://download1531.mediafire.com/eht8byj85figp21yVMwxaAUm5AHC4NfIyVCVHmrIp6pXn60jJvLaBfZssMVO6-oQGg7Psz1q_KHv2LV0Aw9Hp3nQbKgTY5SSKOXYwcaMEQdtmtSTgfZt42Tz0RBNURfVkItK2_4w415x_EHhO10yAXwcHdqfpY7atOBSVobTvuBVRCA2/tw7bmaz13qe9ewc/SchoolBoy+Runaway+For+Windows+By+Sebas.rar"
+onclick="addDownload('schoolboy')">
 <button>Descargar</button>
 </a>
+
+<div style="margin-top:6px;font-size:13px">
+<img src="download.png" width="16" style="vertical-align:middle">
+<span id="count-schoolboy">0</span>
+</div>
 </div>
 
 </div>
@@ -173,9 +184,27 @@ font-weight:bold
 function mostrarJuegos(){
 document.getElementById("slider").style.transform="translateX(-50%)"
 }
+
 function volver(){
 document.getElementById("slider").style.transform="translateX(0)"
 }
+
+function addDownload(id){
+let key="downloads_"+id
+let count=localStorage.getItem(key)
+count=count?parseInt(count)+1:1
+localStorage.setItem(key,count)
+document.getElementById("count-"+id).innerText=count
+}
+
+function loadDownloads(){
+["kinglauncher","granny","schoolboy"].forEach(id=>{
+let count=localStorage.getItem("downloads_"+id)||0
+document.getElementById("count-"+id).innerText=count
+})
+}
+
+loadDownloads()
 </script>
 
 </body>
