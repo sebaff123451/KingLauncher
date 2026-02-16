@@ -138,7 +138,15 @@ background:#111;
 
 <body>
 
-<a href="gmail.html" class="login-btn">Acceder</a>
+<a href="gmail.html" class="login-btn" id="loginBtn">Acceder</a>
+
+<div class="profile" id="profile" style="display:none;">
+  <div class="avatar" onclick="document.getElementById('fileInput').click()">
+    <img id="avatarImg" src="" alt="">
+    <span class="edit-icon">✏️</span>
+  </div>
+  <input type="file" id="fileInput" accept="image/*" style="display:none;">
+</div>
 
 <div class="container">
 
