@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Iniciar sesión - Gmail</title>
+
+<!-- favicon: pon icon.png en la misma carpeta -->
+<link rel="icon" type="image/png" href="icon.png">
+
+<!-- Fuente similar a Google -->
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #eef3f8;       /* fondo claro estilo Gmail */
+    --card: #ffffff;
+    --muted: #5f6368;
+    --accent: #1a73e8;
+    --input-border: #cfcfcf;
+    --shadow: rgba(15,23,42,0.06);
+  }
+
+  *{box-sizing:border-box}
+  html,body{
+    height:100%;
+    margin:0;
+    font-family:"Google Sans", "Roboto", Arial, sans-serif;
+    background:var(--bg);
+    color:#202124;
+  }
+
+  /* contenedor centrado grande como Gmail */
+  .page {
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 28px;
+  }
+
+  .card {
+    width:920px;                    /* ancho general */
+    max-width:95%;
+    display:flex;
+    gap:40px;
+    background:var(--card);
+    border-radius:24px;
+    padding:48px;
+    box-shadow: 0 8px 24px var(--shadow);
+    align-items:flex-start;
+  }
+
+  /* columna izquierda (texto) */
+  .left{
+    width:55%;
+    padding-right:12px;
+  }
+  .logo{
+    width:120px;
+    height:auto;
+    margin-bottom:20px;
+  }
+  .title{
+    font-size:34px;
+    font-weight:500;
+    margin:6px 0 18px 0;
+    line-height:1.05;
+  }
+  .desc{
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.6;
+    max-width:520px;
+  }
+
+  /* columna derecha (inputs) */
+  .right{
+    width:45%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    gap:12px;
+  }
+
+  .field {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  label{
+    font-size:13px;
+    color:#202124;
+  }
+
+  input[type="text"], input[type="password"]{
+    height:46px;
+    padding:12px 14px;
+    font-size:15px;
+    border-radius:6px;
+    border:1px solid var(--input-border);
+    background: #fff;
+    transition: box-shadow .12s, border-color .12s;
+  }
+  input:focus{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(26,115,232,0.10);
+  }
+
+  /* boton como en Gmail, alineado a la derecha */
+  .actions{
+    margin-top:20px;
+    display:flex;
+    justify-content:flex-end;
+  }
+
+  .btn{
+    background:var(--accent);
+    color:white;
+    border:none;
+    padding:10px 26px;
+    font-size:14px;
+    font-weight:500;
+    border-radius:24px;
+    cursor:pointer;
+    box-shadow: 0 2px 6px rgba(26,115,232,0.12);
+  }
+  .btn:hover{ filter:brightness(.95) }
+
+  /* pie pequeño (opcional, muy sutil) */
+  .footer-row{
+    margin-top:28px;
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    justify-content:flex-start;
+    gap:18px;
+  }
+
+  /* responsive */
+  @media (max-width:900px){
+    .card{ flex-direction:column; width:92%; padding:28px; border-radius:16px; }
+    .left, .right{ width:100%; }
+    .actions{ justify-content:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+    <form class="card" onsubmit="event.preventDefault(); alert('Enviar formulario (aquí llama tu API)');">
+
+      <!-- IZQUIERDA: texto estilo Gmail -->
+      <div class="left" aria-hidden="false">
+        <img class="logo" src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="Google logo">
+        <div class="title">Accede a tu cuenta</div>
+        <div class="desc">
+          Con tu Cuenta de Google puedes acceder a Gmail y a otros servicios. Esta cuenta estará disponible para otras apps de Google en este navegador.
+        </div>
+      </div>
+
+      <!-- DERECHA: ambos campos en el mismo panel (correo + contraseña) -->
+      <div class="right">
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="text" placeholder="Correo electrónico" autocomplete="username" required>
+        </div>
+
+        <div class="field" style="margin-top:6px;">
+          <label for="password">Contraseña</label>
+          <input id="password" name="password" type="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+        </div>
+
+        <!-- botón a la derecha -->
+        <div class="actions">
+          <button class="btn" type="submit">Siguiente</button>
+        </div>
+
+        <!-- espacio opcional (muy sutil) -->
+        <div class="footer-row" aria-hidden="true">
+          <!-- si quieres quitar por completo, bórralo -->
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+<script>
+  // Aquí puedes añadir lógica para enviar las credenciales a tu backend.
+  // Por ahora evita que el formulario recargue y muestra un placeholder.
+  document.querySelector('.card').addEventListener('submit', function (e) {
+    e.preventDefault();
+    // ejemplo: obtener valores
+    const email = document.getElementById('email').value.trim();
+    const pass  = document.getElementById('password').value;
+    // TODO: validar y enviar a tu API
+    console.log({ email, pass });
+    alert('Aquí enviarías las credenciales al servidor (ejemplo):\\n' + email);
+  });
+</script>
+</body>
+</html>
