@@ -199,5 +199,36 @@ document.getElementById("slider").style.transform="translateX(0)"
 }
 </script>
 
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const profile = document.getElementById("profile");
+const avatarImg = document.getElementById("avatarImg");
+const fileInput = document.getElementById("fileInput");
+
+// Verificar sesión
+if(localStorage.getItem("king_user_logged") === "true"){
+  loginBtn.style.display = "none";
+  profile.style.display = "block";
+
+  const savedAvatar = localStorage.getItem("king_user_avatar");
+  if(savedAvatar){
+    avatarImg.src = savedAvatar;
+  }
+}
+
+// Subir imagen
+fileInput.addEventListener("change", function(){
+  const file = this.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      avatarImg.src = e.target.result;
+      localStorage.setItem("king_user_avatar", e.target.result);
+    }
+    reader.readAsDataURL(file);
+  }
+});
+</script>
+
 </body>
 </html>
