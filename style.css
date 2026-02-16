@@ -34,24 +34,3 @@ button {
 button:hover {
     background: #00cc7a;
 }
-
-.login-btn{
-position:fixed;
-top:20px;
-right:30px;
-padding:8px 22px;
-font-size:14px;
-font-weight:500;
-background:#ffffff;
-color:#1a73e8;
-border:1px solid #dadce0;
-border-radius:50px;
-text-decoration:none;
-transition:0.2s;
-z-index:999;
-}
-
-.login-btn:hover{
-background:#f7f8f8;
-box-shadow:0 1px 3px rgba(0,0,0,0.2);
-}
