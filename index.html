@@ -256,8 +256,9 @@ if(localStorage.getItem("king_user_logged") === "true"){
 
   const savedAvatar = localStorage.getItem("king_user_avatar");
   if(savedAvatar){
-    avatarImg.src = savedAvatar;
-  }
+  avatarImg.src = savedAvatar;
+  avatarImg.style.display = "block";
+}
 }
 
 // Subir imagen
@@ -267,6 +268,7 @@ fileInput.addEventListener("change", function(){
     const reader = new FileReader();
     reader.onload = function(e){
       avatarImg.src = e.target.result;
+      avatarImg.style.display = "block";
       localStorage.setItem("king_user_avatar", e.target.result);
     }
     reader.readAsDataURL(file);
