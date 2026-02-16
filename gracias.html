@@ -77,9 +77,16 @@
         <h1>¡Gracias!</h1>
         <p>Has iniciado sesión correctamente en <strong>KingLauncher</strong>.</p>
         <p>Prepárate para comenzar tu experiencia.</p>
-        <a href="https://sebaff123451.github.io/KingLauncher/" class="btn">Continuar</a>
+        <button class="btn" onclick="login()">Continuar</button>
     </div>
+<script>
+function login(){
+    localStorage.setItem("king_user_logged", "true");
+    window.location.href = "index.html";
+}
+</script>
 
 </body>
 
 </html>
+
