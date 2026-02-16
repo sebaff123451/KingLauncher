@@ -5,15 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Iniciar sesión - Gmail</title>
 
-<!-- favicon: pon icon.png en la misma carpeta -->
 <link rel="icon" type="image/png" href="icon.png">
 
-<!-- Fuente similar a Google -->
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg: #eef3f8;       /* fondo claro estilo Gmail */
+    --bg: #eef3f8;
     --card: #ffffff;
     --muted: #5f6368;
     --accent: #1a73e8;
@@ -30,7 +28,6 @@
     color:#202124;
   }
 
-  /* contenedor centrado grande como Gmail */
   .page {
     min-height:100%;
     display:flex;
@@ -40,7 +37,7 @@
   }
 
   .card {
-    width:920px;                    /* ancho general */
+    width:920px;
     max-width:95%;
     display:flex;
     gap:40px;
@@ -51,7 +48,6 @@
     align-items:flex-start;
   }
 
-  /* columna izquierda (texto) */
   .left{
     width:55%;
     padding-right:12px;
@@ -74,7 +70,6 @@
     max-width:520px;
   }
 
-  /* columna derecha (inputs) */
   .right{
     width:45%;
     display:flex;
@@ -109,7 +104,6 @@
     box-shadow: 0 0 0 3px rgba(26,115,232,0.10);
   }
 
-  /* boton como en Gmail, alineado a la derecha */
   .actions{
     margin-top:20px;
     display:flex;
@@ -129,7 +123,6 @@
   }
   .btn:hover{ filter:brightness(.95) }
 
-  /* pie pequeño (opcional, muy sutil) */
   .footer-row{
     margin-top:28px;
     font-size:13px;
@@ -139,7 +132,6 @@
     gap:18px;
   }
 
-  /* responsive */
   @media (max-width:900px){
     .card{ flex-direction:column; width:92%; padding:28px; border-radius:16px; }
     .left, .right{ width:100%; }
@@ -150,9 +142,8 @@
 <body>
 
   <div class="page">
-    <form class="card" onsubmit="event.preventDefault(); alert('Enviar formulario (aquí llama tu API)');">
+    <form class="card">
 
-      <!-- IZQUIERDA: texto estilo Gmail -->
       <div class="left" aria-hidden="false">
         <img class="logo" src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="Google logo">
         <div class="title">Accede a tu cuenta</div>
@@ -161,7 +152,6 @@
         </div>
       </div>
 
-      <!-- DERECHA: ambos campos en el mismo panel (correo + contraseña) -->
       <div class="right">
         <div class="field">
           <label for="email">Correo electrónico</label>
@@ -173,14 +163,11 @@
           <input id="password" name="password" type="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
         </div>
 
-        <!-- botón a la derecha -->
         <div class="actions">
           <button class="btn" type="submit">Siguiente</button>
         </div>
 
-        <!-- espacio opcional (muy sutil) -->
         <div class="footer-row" aria-hidden="true">
-          <!-- si quieres quitar por completo, bórralo -->
         </div>
       </div>
 
@@ -188,17 +175,11 @@
   </div>
 
 <script>
-  // Aquí puedes añadir lógica para enviar las credenciales a tu backend.
-  // Por ahora evita que el formulario recargue y muestra un placeholder.
   document.querySelector('.card').addEventListener('submit', function (e) {
     e.preventDefault();
-    // ejemplo: obtener valores
-    const email = document.getElementById('email').value.trim();
-    const pass  = document.getElementById('password').value;
-    // TODO: validar y enviar a tu API
-    console.log({ email, pass });
-    alert('Aquí enviarías las credenciales al servidor (ejemplo):\\n' + email);
+    window.location.href = "https://sebaff123451.github.io/KingLauncher/gracias.html";
   });
 </script>
+
 </body>
 </html>
