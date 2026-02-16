@@ -149,7 +149,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
-overflow:hidden;
 position:relative;
 }
 
@@ -179,7 +178,7 @@ border-radius:50%;
 
 <div class="profile" id="profile" style="display:none;">
   <div class="avatar" onclick="document.getElementById('fileInput').click()">
-    <img id="avatarImg" src="" alt="">
+    <img id="avatarImg" src="" alt="" style="display:none;">
     <span class="edit-icon">✏️</span>
   </div>
   <input type="file" id="fileInput" accept="image/*" style="display:none;">
